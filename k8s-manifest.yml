@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gateway-api-deployment
+  labels:
+    app: gateway-api
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: gateway-api
+  template:
+    metadata:
+      labels:
+        app: gateway-api
+    spec:
+      containers:
+      - name: gateway-api
+        image: node:8
+        ports:
+        - containerPort: 3000
